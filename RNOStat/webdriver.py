@@ -26,7 +26,7 @@ class FlaskApp(Flask):
     def register_mass_blueprints(self, bps):
         for bp in bps:
             try:
-                self.register_blueprint(bp.blueprint)
+                self.register_blueprint(bp.blueprint, url_prefix=bp.url_prefix)
             except Exception as ex:
                 self.logger.warning("Blueprint `{name}` was not registered\n\n ----- {name} -----\n{tb}".format(
                     name=bp.name,
