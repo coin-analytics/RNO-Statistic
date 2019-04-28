@@ -1,0 +1,13 @@
+# IDE 폴더
+.idea
+
+# Config 파일
+*.conf
+*.ini
+
+# Python 환경
+venv
+
+# Python Temp 파일
+*.pyc
+__pycache__
