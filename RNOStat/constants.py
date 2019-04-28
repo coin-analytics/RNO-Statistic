@@ -1,0 +1,8 @@
+_MINER_VERSIONS = [
+    "1.2-c4-2019042701"
+]
+
+GET = ["GET"]
+POST = ["POST"]
+OPTION = ["OPTION"]
+DELETE = ["DELETE"]
