@@ -50,6 +50,7 @@ class SuccessResponse(BaseResponse):
 class FailureResponse(BaseResponse):
     code = -1
 
-    def __init__(self, message=None, data=None):
+    def __init__(self, code=code, message=None, data=None):
+        self.code = code
         self.message = message
         self.data = data
