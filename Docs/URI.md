@@ -22,8 +22,16 @@
 - Example 2 (Update required)
 ```json
 {
-  "status": -1,
+  "status": 2001,
   "message": "업데이트가 필요합니다. 확인을 누르면 사이트로 이동합니다."
+}
+```
+
+- Example 3 (Unspecified version name)
+```json
+{
+  "status": 2002,
+  "message": "유효하지 않은 마이너 버전입니다."
 }
 ```
 
