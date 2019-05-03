@@ -1,7 +1,7 @@
 # RNOMiner API Document
 
 ## On Version Check
-> POST /ap/check
+> POST /api/check
 
 ### / Request
 - POST Payload
