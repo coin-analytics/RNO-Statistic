@@ -46,7 +46,7 @@ None
 ```json
 {
   "status": 1,
-  "message": "None"
+  "message": null
 }
 ```
 
