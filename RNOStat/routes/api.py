@@ -2,7 +2,7 @@ from ..blueprint import RSBlueprint
 from ..constants import _MINER_VERSIONS, GET, POST
 from ..supports import FormDataRequired
 from ..reports import SuccessResponse, FailureResponse
-from flask import make_response, jsonify, request
+from flask import request, current_app
 
 
 RS_API = RSBlueprint("RNOStatistics API", __name__, prefix="/api/")
@@ -27,3 +27,15 @@ def RS_API_VersionCheck():
         message="유효하지 않은 마이너 버전입니다."
     ).make_response()
 
+
+@RS_API.route("/report", methods=POST)
+def RS_API_ReportPing():
+    isLogging = current_app.custom_config.get("logging")
+
+    if isLogging:
+        return SuccessResponse().make_response()
+
+    return FailureResponse(
+        code=2100,
+        message="로그 수집이 일시 중단되었습니다."
+    ).make_response()

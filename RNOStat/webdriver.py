@@ -1,6 +1,7 @@
 import logging
 import traceback
 from flask import Flask
+from .config import Config
 
 
 class FlaskApp(Flask):
@@ -14,6 +15,7 @@ class FlaskApp(Flask):
         self._threaded  = config.get("threading", True)
 
         self.logger = logging.getLogger("{0}.{1}".format(self.__class__.__qualname__, self.name))
+        self.custom_config = Config()
 
     def extract_config(self):
         return {
