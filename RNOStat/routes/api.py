@@ -28,7 +28,7 @@ def RS_API_VersionCheck():
     ).make_response()
 
 
-@RS_API.route("/report", methods=POST)
+@RS_API.route("/report", methods=GET)
 def RS_API_ReportPing():
     isLogging = current_app.custom_config.get("logging")
 
