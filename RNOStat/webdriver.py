@@ -3,6 +3,7 @@ import traceback
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
+from .db import build_models
 
 
 class FlaskApp(Flask):
@@ -31,6 +32,7 @@ class FlaskApp(Flask):
         self.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
         self.db = SQLAlchemy(self)
+        self.models = build_models(self.db)
 
     def extract_config(self):
         return {
