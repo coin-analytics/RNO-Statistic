@@ -1,6 +1,7 @@
 import logging
 import traceback
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 
 
@@ -16,6 +17,20 @@ class FlaskApp(Flask):
 
         self.logger = logging.getLogger("{0}.{1}".format(self.__class__.__qualname__, self.name))
         self.custom_config = Config()
+
+        DBConfig = self.custom_config.get("settings/db")
+        DBHost = DBConfig['host']
+        DBPort = DBConfig['port']
+        DBUser = DBConfig['user']
+        DBPass = DBConfig['pw']
+
+        self.config["SECRET_KEY"] = self.custom_config.get("settings/app/secret")
+        self.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://{}:{}@{}:{}/{}".format(
+            DBUser, DBPass, DBHost, DBPort, "rnoapi"
+        )
+        self.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+        self.db = SQLAlchemy(self)
 
     def extract_config(self):
         return {

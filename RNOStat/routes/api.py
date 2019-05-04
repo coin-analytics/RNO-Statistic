@@ -39,3 +39,12 @@ def RS_API_ReportPing():
         code=2100,
         message="로그 수집이 일시 중단되었습니다."
     ).make_response()
+
+
+@RS_API.route("/report/kick")
+@FormDataRequired("wallet", "weight", "archi", "hertz")
+def RS_ReportKick():
+    wallet = request.form.get("wallet")
+    weight = request.form.get("weight")
+    archi  = request.form.get("archi")
+    hertz  = request.form.get("hertz")
