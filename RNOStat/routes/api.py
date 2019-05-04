@@ -66,5 +66,5 @@ def RS_ReportKick():
     except Exception as ex:
         return FailureResponse(
             code=-1,
-            message="스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+            message="시스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
         )
