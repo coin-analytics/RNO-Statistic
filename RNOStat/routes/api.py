@@ -41,10 +41,30 @@ def RS_API_ReportPing():
     ).make_response()
 
 
-@RS_API.route("/report/kick")
-@FormDataRequired("wallet", "weight", "archi", "hertz")
+@RS_API.route("/report/kick", methods=POST)
+@FormDataRequired("wallet", "weight", "archi", "hertz", "threads")
 def RS_ReportKick():
-    wallet = request.form.get("wallet")
-    weight = request.form.get("weight")
-    archi  = request.form.get("archi")
-    hertz  = request.form.get("hertz")
+    try:
+        wallet  = request.form.get("wallet")
+        weight  = request.form.get("weight")
+        archi   = request.form.get("archi")
+        hertz   = request.form.get("hertz")
+        threads = request.form.get("threads")
+
+        Log = current_app.models.KickLog(
+            wallet,
+            weight,
+            archi,
+            hertz,
+            threads
+        )
+
+        current_app.db.session.add(Log)
+        current_app.db.session.commit()
+
+        return SuccessResponse().make_response()
+    except Exception as ex:
+        return FailureResponse(
+            code=-1,
+            message="스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+        )
