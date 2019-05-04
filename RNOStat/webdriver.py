@@ -4,6 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 from .db import build_models
+from os import listdir, getcwd, mkdir
 
 
 class FlaskApp(Flask):
@@ -15,6 +16,9 @@ class FlaskApp(Flask):
         self._port      = config.get("port", 8080)
         self._debug     = config.get("debugging", False)
         self._threaded  = config.get("threading", True)
+
+        self.base_directory = getcwd()
+        if "logs" not in listdir(self.base_directory):          mkdir(f"{self.base_directory}/logs")
 
         self.logger = logging.getLogger("{0}.{1}".format(self.__class__.__qualname__, self.name))
         self.custom_config = Config()
