@@ -3,9 +3,36 @@ from ..constants import _MINER_VERSIONS, GET, POST
 from ..supports import FormDataRequired
 from ..reports import SuccessResponse, FailureResponse
 from flask import request, current_app
+from random import choice
+from string import ascii_letters, digits, punctuation
+from traceback import format_exc
+
+
+def randomString(stringLength=7):
+    letters = ascii_letters   \
+              + ascii_letters \
+              + ascii_letters \
+              + digits        \
+              + punctuation[:5]
+    return ''.join(choice(letters) for i in range(stringLength))
 
 
 RS_API = RSBlueprint("RNOStatistics API", __name__, prefix="/api/")
+
+
+@RS_API.errorhandler(500)
+def RS_InternalErrorHandler(ex):
+    randCode = randomString(12)
+
+    open("{}/logs/{}.log".format(current_app.base_directory, randCode)).write(
+        format_exc(ex)
+    )
+
+    return FailureResponse(
+        code=9001,
+        message=f"시스템 처리 중 오류가 발생하였습니다. 오류코드는 `{randCode}` 이며, 지속적인 오류 발생"
+        f"시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+    )
 
 
 @RS_API.route("/check", methods=POST)
@@ -44,27 +71,21 @@ def RS_API_ReportPing():
 @RS_API.route("/report/kick", methods=POST)
 @FormDataRequired("wallet", "weight", "archi", "hertz", "threads")
 def RS_ReportKick():
-    try:
-        wallet  = request.form.get("wallet")
-        weight  = request.form.get("weight")
-        archi   = request.form.get("archi")
-        hertz   = request.form.get("hertz")
-        threads = request.form.get("threads")
+    wallet  = request.form.get("wallet")
+    weight  = request.form.get("weight")
+    archi   = request.form.get("archi")
+    hertz   = request.form.get("hertz")
+    threads = request.form.get("threads")
 
-        Log = current_app.models.KickLog(
-            wallet,
-            weight,
-            archi,
-            hertz,
-            threads
-        )
+    Log = current_app.models.KickLog(
+        wallet,
+        weight,
+        archi,
+        hertz,
+        threads
+    )
 
-        current_app.db.session.add(Log)
-        current_app.db.session.commit()
+    current_app.db.session.add(Log)
+    current_app.db.session.commit()
 
-        return SuccessResponse().make_response()
-    except Exception as ex:
-        return FailureResponse(
-            code=-1,
-            message="시스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
-        )
+    return SuccessResponse().make_response()

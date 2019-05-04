@@ -8,6 +8,7 @@ class RSBlueprint:
 
         self._blueprint = Blueprint(*args, **kwargs)
         self.route = self._blueprint.route
+        self.errorhandler = self._blueprint.errorhandler
 
     @property
     def blueprint(self):
