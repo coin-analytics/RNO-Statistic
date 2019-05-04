@@ -1,5 +1,16 @@
 # RNOMiner API Document
 
+## Functional Error
+> 모든 API 처리 중 오류 발생 시, 다음 내용을 메시지박스로 출력
+
+### Response
+```json
+{
+  "status": 9001,
+  "message": "시스템 처리 중 오류가 발생하였습니다. 오류코드는 `pENPbv3vnkrg` 이며, 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+}
+```
+
 ## On Version Check
 > POST /api/check
 
@@ -53,7 +64,7 @@ None
 - Example 2 (No Logging)
 ```json
 {
-  "status": -1,
+  "status": 2100,
   "message": "로그 수집이 일시 중단되었습니다."
 }
 ```
@@ -78,22 +89,6 @@ None
 {
   "status": 1,
   "message": null
-}
-```
-
-- Example 2 (DB error)
-```json
-{
-  "status": -1,
-  "message": "시스템 보고 중 오류가 발생하였습니다. 오류코드는 `c1wx83dq`이며, 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
-}
-```
-
-- Example 3 (Fatal error)
-```json
-{
-  "status": -1,
-  "message": "시스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
 }
 ```
 
