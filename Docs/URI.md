@@ -73,7 +73,29 @@ None
     | threads | Integer | 작동 스레드 수 | 4 |
     
 ### / Response
-None
+- Example 1 (Success)
+```json
+{
+  "status": 1,
+  "message": null
+}
+```
+
+- Example 2 (DB error)
+```json
+{
+  "status": -1,
+  "message": "시스템 보고 중 오류가 발생하였습니다. 오류코드는 `c1wx83dq`이며, 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+}
+```
+
+- Example 3 (Fatal error)
+```json
+{
+  "status": -1,
+  "message": "시스템 보고 중 오류가 발생하였습니다. 잠시 후 다시 시조해주세요. 지속적인 오류 발생 시 c01n.4n4lyt1cs@gmail.com에 제보해주시기 바랍니다."
+}
+```
 
 ## On minedCoin
 > POST /api/report/mined
