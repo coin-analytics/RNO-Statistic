@@ -70,6 +70,7 @@ None
     | weight | Float | 지갑계정의 가중치 | 1.5 |
     | archi | String | CPU 이름 | i7-7500U |
     | hertz | Float | CPU 동작속도 | 2.70Ghz |
+    | threads | Integer | 작동 스레드 수 | 4 |
     
 ### / Response
 None
