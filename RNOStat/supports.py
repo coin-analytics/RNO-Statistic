@@ -24,7 +24,7 @@ def FormDataRequired(*keys):
             if not ProvidenKeys:            return f(*args, **kwargs)
 
             FormKeys =                      {*request.form}
-            if FormKeys != ProvidenKeys:    return MustContainFormData().make_response()
+            if not ProvidenKeys.issubset(FormKeys):    return MustContainFormData().make_response()
 
             return f(*args, **kwargs)
         return _f
