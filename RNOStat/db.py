@@ -32,9 +32,9 @@ def build_models(db):
         nonce = db.Column(db.Integer, nullable=False)
         nbit = db.Column(db.Integer, nullable=False)
 
-
     class Models:
         KickLog=_KickLog
+        MinedCoin=_MinedCoin
 
     return Models
 
