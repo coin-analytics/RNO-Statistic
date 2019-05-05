@@ -110,4 +110,10 @@ None
     | nBit | Integer | Required | RNO 서버에서 주어진 nBit 값 | 4 |
     
 ### / Response
-None
+- Example 1 (Success)
+```json
+{
+  "status": 1,
+  "message": null
+}
+```
