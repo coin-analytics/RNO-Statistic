@@ -1,5 +1,5 @@
 # RNO코인 통계마이너 백엔드
-> [RNO Coin](https://rnocoin.com/), [Team c01n.4n4lyt1cs](https://c01n.4n4lyt1cs.dev/)
+> [RNO Coin](https://rnocoin.com/), [Team c01n.4n4lyt1cs](https://coinanalytics.dev)
 
 ## 개발자
 - Caffe
