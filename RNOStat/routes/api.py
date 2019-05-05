@@ -13,7 +13,7 @@ def randomString(stringLength=7):
               + ascii_letters \
               + ascii_letters \
               + digits        \
-              + punctuation[:5]
+              + "-_[]$"
     return ''.join(choice(letters) for i in range(stringLength))
 
 
