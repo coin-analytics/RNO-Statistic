@@ -75,13 +75,13 @@ None
 ### / Request
 - POST Payload
 
-    | Name | Type | Content | Example |
-    |:----:|:----:|:-------:|:--------|
-    | wallet | String | 로그인된 마이닝 지갑주소 |  |
-    | weight | Float | 지갑계정의 가중치 | 1.5 |
-    | archi | String | CPU 이름 | i7-7500U |
-    | hertz | Float | CPU 동작속도 | 2.70Ghz |
-    | threads | Integer | 작동 스레드 수 | 4 |
+    | Name | Type | Required | Content | Example |
+    |:----:|:----:|:--------:|:-------:|:--------|
+    | wallet | String | Required | 로그인된 마이닝 지갑주소 |  |
+    | weight | Float | Required | 지갑계정의 가중치 | 1.5 |
+    | archi | String | Optional | CPU 이름 | i7-7500U |
+    | hertz | Float | Optional | CPU 동작속도 | 2.70Ghz |
+    | threads | Integer | Required | 작동 스레드 수 | 4 |
     
 ### / Response
 - Example 1 (Success)

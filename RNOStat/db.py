@@ -7,7 +7,7 @@ def build_models(db):
         weight = db.Column(db.Float, nullable=False)
         archi = db.Column(db.String(50), nullable=True)
         hertz = db.Column(db.Float, nullable=True)
-        threads = db.Column(db.Integer, nullable=True)
+        threads = db.Column(db.Integer, nullable=False)
 
         def __init__(self, wallet, weight, archi, hertz, threads):
             self.wallet = wallet
