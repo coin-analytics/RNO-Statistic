@@ -69,7 +69,7 @@ def RS_API_ReportPing():
 
 
 @RS_API.route("/report/kick", methods=POST)
-@FormDataRequired("wallet", "weight", "archi", "hertz", "threads")
+@FormDataRequired("wallet", "weight", "threads")
 def RS_ReportKick():
     wallet  = request.form.get("wallet")
     weight  = request.form.get("weight")
