@@ -19,6 +19,20 @@ def build_models(db):
         def __repr__(self):
             return f"<KickLog('{self.wallet}', '{self.weight}' with '{self.archi}', {self.hertz} x {self.thread})>"
 
+    class _MinedCoin(db.Model):
+        __table_name = "mining_log"
+
+        id = db.Column(db.Integer, primary_key=True)
+        wallet = db.Column(db.String(128), nullable=False)
+        weight = db.Column(db.Float, nullable=False)
+        cores = db.Column(db.Integer, nullable=True)
+        solve_time = db.Column(db.Integer, nullable=True)
+        coin = db.Column(db.Float, nullable=False)
+        hashString = db.Column(db.String(12), nullable=False)
+        nonce = db.Column(db.Integer, nullable=False)
+        nbit = db.Column(db.Integer, nullable=False)
+
+
     class Models:
         KickLog=_KickLog
 
