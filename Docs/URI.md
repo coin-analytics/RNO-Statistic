@@ -98,16 +98,16 @@ None
 ### / Request
 - POST Payload
 
-    | Name | Type | Content | Example |
-    |:----:|:----:|:-------:|:--------|
-    | wallet | String | 로그인된 마이닝 지갑주소 |  |
-    | weight | Float | 지갑계정의 가중치 | 1.5 |
-    | cores | Integer | 채굴에 사용중인 코어 수 | 4 |
-    | solve_time | Integer | 한 개 해시 해결에 걸린 시간(ms) | 3437 |
-    | coin | Float | 채굴된 코인 개수 | 0.04234 |
-    | hashString | String | Solve한 hashString | dV83sd93mD== |
-    | nonce | Integer | 찾아낸 nonce 값 | 9385712 |
-    | nBit | Integer | RNO 서버에서 주어진 nBit 값 | 4 |
+    | Name | Type | Required | Content | Example |
+    |:----:|:----:|:-------:|:-------:|:--------|
+    | wallet | String | Required | 로그인된 마이닝 지갑주소 |  |
+    | weight | Float | Required | 지갑계정의 가중치 | 1.5 |
+    | cores | Integer | Optional | 채굴에 사용중인 코어 수 | 4 |
+    | solve_time | Integer | Optional | 한 개 해시 해결에 걸린 시간(ms) | 3437 |
+    | coin | Float | Required | 채굴된 코인 개수 | 0.04234 |
+    | hashString | String | Required | Solve한 hashString | dV83sd93mD== |
+    | nonce | Integer | Required | 찾아낸 nonce 값 | 9385712 |
+    | nBit | Integer | Required | RNO 서버에서 주어진 nBit 값 | 4 |
     
 ### / Response
 None
