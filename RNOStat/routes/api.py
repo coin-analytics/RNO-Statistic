@@ -89,3 +89,27 @@ def RS_ReportKick():
     current_app.db.session.commit()
 
     return SuccessResponse().make_response()
+
+
+@RS_API.route("/report/mined", methods=POST)
+@FormDataRequired("wallet", "weight", "coin", "hashString", "nonce", "nBit")
+def RS_MinedCoin():
+    wallet      = request.form.get("wallet")
+    weight      = request.form.get("weight")
+    coin        = request.form.get("coin")
+    hashString  = request.form.get("hashString")
+    nonce       = request.form.get("nonce")
+    nBit        = request.form.get("nBit")
+
+    # Optional Values
+    cores       = request.form.get("cores")
+    solve_time  = request.form.get("solve_time")
+
+    Coins = current_app.models.MinedCoin(
+        wallet, weight, cores, solve_time, coin, hashString, nonce, nBit
+    )
+
+    current_app.db.session.add(Coins)
+    current_app.db.session.commit()
+
+    return SuccessResponse().make_response()
