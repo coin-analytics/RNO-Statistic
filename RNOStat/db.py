@@ -32,6 +32,16 @@ def build_models(db):
         nonce = db.Column(db.Integer, nullable=False)
         nbit = db.Column(db.Integer, nullable=False)
 
+        def __init__(self, wallet, weight, cores, solve_time, coin, hashString, nonce, nbit):
+            self.wallet = wallet
+            self.weight = weight
+            self.coin = coin
+            self.hashString = hashString
+            self.nonce = nonce
+            self.nbit = nbit
+            self.cores = cores or None
+            self.solve_time = solve_time or None
+
     class Models:
         KickLog=_KickLog
         MinedCoin=_MinedCoin
