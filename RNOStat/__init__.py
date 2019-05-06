@@ -6,5 +6,5 @@ App = FlaskApp(name="RNOSatistics")
 App.register_mass_blueprints(
     [
         RS_API
-    ]
-)
+        ]
+    )

@@ -1,4 +1,4 @@
-_MINER_VERSIONS = [
+MINER_VERSIONS = [
     "1.2-c4-2019042701"
 ]
 

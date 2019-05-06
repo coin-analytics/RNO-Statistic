@@ -12,10 +12,10 @@ class FlaskApp(Flask):
         self.name = config.get("name", __name__)
         super().__init__(self.name)
 
-        self._host      = config.get("host", "localhost")
-        self._port      = config.get("port", 8080)
-        self._debug     = config.get("debugging", False)
-        self._threaded  = config.get("threading", True)
+        self._host = config.get("host", "localhost")
+        self._port = config.get("port", 8080)
+        self._debug = config.get("debugging", False)
+        self._threaded = config.get("threading", True)
 
         self.base_directory = getcwd()
         if "logs" not in listdir(self.base_directory):          mkdir(f"{self.base_directory}/logs")
@@ -54,7 +54,7 @@ class FlaskApp(Flask):
                 self.logger.warning("Blueprint `{name}` was not registered\n\n ----- {name} -----\n{tb}".format(
                     name=bp.name,
                     tb=traceback.format_exc(ex)
-                ) )
+                    ))
 
     def start(self):
         self.run(**self.extract_config())
